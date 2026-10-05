@@ -1,0 +1,458 @@
+/* ==========================================================
+   DESIGN TOKENS  — Figma marketing system (DESIGN-figma.md)
+   ========================================================== */
+:root {
+  /* ── Colors ── */
+  --c-primary:        #000000;
+  --c-on-primary:     #ffffff;
+  --c-ink:            #000000;
+  --c-canvas:         #ffffff;
+  --c-inverse-canvas: #000000;
+  --c-inverse-ink:    #ffffff;
+  --c-on-inverse-soft: rgba(255,255,255,0.16);
+  --c-hairline:       #e6e6e6;
+  --c-hairline-soft:  #f1f1f1;
+  --c-surface-soft:   #f7f7f5;
+  --c-block-lime:     #dceeb1;
+  --c-block-lilac:    #c5b0f4;
+  --c-block-cream:    #f4ecd6;
+  --c-block-pink:     #efd4d4;
+  --c-block-mint:     #c8e6cd;
+  --c-block-coral:    #f3c9b6;
+  --c-block-navy:     #1f1d3d;
+  --c-accent-magenta: #ff3d8b;
+  --c-success:        #1ea64a;
+
+  /* ── Typography — Inter substitutes figmaSans ── */
+  /* note: reduce line-heights by ~0.02 vs spec to compensate for Inter's taller x-height */
+  --f-sans: 'Inter', 'SF Pro Display', system-ui, helvetica, sans-serif;
+  --f-mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+
+  /* ── Spacing ── */
+  --s-hair:    1px;
+  --s-xxs:     4px;
+  --s-xs:      8px;
+  --s-sm:      12px;
+  --s-md:      16px;
+  --s-lg:      24px;
+  --s-xl:      32px;
+  --s-xxl:     48px;
+  --s-section: 96px;
+
+  /* ── Border radius ── */
+  --r-xs:   2px;
+  --r-sm:   6px;
+  --r-md:   8px;
+  --r-lg:   24px;
+  --r-xl:   32px;
+  --r-pill: 50px;
+  --r-full: 9999px;
+}
+
+
+/* ==========================================================
+   RESET & BASE
+   ========================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'kern';
+}
+
+body {
+  font-family: var(--f-sans);
+  font-size: 18px;
+  font-weight: 320;
+  line-height: 1.45;
+  letter-spacing: -0.26px;
+  color: var(--c-ink);
+  background: var(--c-canvas);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+
+/* ==========================================================
+   LAYOUT
+   ========================================================== */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: var(--s-xxl);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-inline: var(--s-lg);
+  }
+}
+
+
+/* ==========================================================
+   TYPOGRAPHY CLASSES
+   ========================================================== */
+
+/* display-xl: 86px / weight 340 / lh 1.00 / ls -1.72px */
+.display-xl {
+  font-family: var(--f-sans);
+  font-size: clamp(48px, 6.7vw, 86px);
+  font-weight: 340;
+  line-height: 1.00;
+  letter-spacing: -1.72px;
+}
+
+/* display-lg: 64px / weight 340 / lh 1.10 / ls -0.96px */
+.display-lg {
+  font-family: var(--f-sans);
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 340;
+  line-height: 1.10;
+  letter-spacing: -0.96px;
+}
+
+/* headline: 26px / weight 540 / lh 1.35 / ls -0.26px */
+.headline {
+  font-family: var(--f-sans);
+  font-size: 26px;
+  font-weight: 540;
+  line-height: 1.35;
+  letter-spacing: -0.26px;
+}
+
+/* subhead: 26px / weight 340 */
+.subhead {
+  font-family: var(--f-sans);
+  font-size: 26px;
+  font-weight: 340;
+  line-height: 1.35;
+  letter-spacing: -0.26px;
+}
+
+/* card-title: 24px / weight 700 */
+.card-title {
+  font-family: var(--f-sans);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+/* body-lg: 20px / weight 330 */
+.body-lg {
+  font-family: var(--f-sans);
+  font-size: 20px;
+  font-weight: 330;
+  line-height: 1.38;
+  letter-spacing: -0.14px;
+}
+
+/* body: 18px / weight 320 (base, already set on body) */
+.body {
+  font-family: var(--f-sans);
+  font-size: 18px;
+  font-weight: 320;
+  line-height: 1.45;
+  letter-spacing: -0.26px;
+}
+
+/* body-sm: 16px / weight 330 */
+.body-sm {
+  font-family: var(--f-sans);
+  font-size: 16px;
+  font-weight: 330;
+  line-height: 1.45;
+  letter-spacing: -0.14px;
+}
+
+/* eyebrow: figmaMono → JetBrains Mono / 18px / uppercase / ls +0.54 */
+.eyebrow {
+  font-family: var(--f-mono);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.30;
+  letter-spacing: 0.54px;
+  text-transform: uppercase;
+  color: var(--c-ink);
+}
+
+/* caption: mono / 12px / uppercase / ls +0.60 */
+.caption {
+  font-family: var(--f-mono);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.00;
+  letter-spacing: 0.60px;
+  text-transform: uppercase;
+}
+
+
+/* ==========================================================
+   BUTTONS
+   ========================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-xs);
+  font-family: var(--f-sans);
+  font-size: 18px;
+  font-weight: 480;
+  line-height: 1.40;
+  letter-spacing: -0.10px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+  border: none;
+  text-decoration: none;
+}
+
+.btn:hover { opacity: 0.85; }
+.btn:active { opacity: 0.7; }
+
+/* Primary: black pill */
+.btn-primary {
+  background: var(--c-primary);
+  color: var(--c-on-primary);
+  border-radius: var(--r-pill);
+  padding: 10px 24px;
+}
+
+/* Secondary: white pill (no background, hairline border) */
+.btn-secondary {
+  background: var(--c-canvas);
+  color: var(--c-ink);
+  border-radius: var(--r-pill);
+  padding: 8px 20px 10px;
+  border: var(--s-hair) solid var(--c-hairline);
+}
+
+/* Tertiary: text only */
+.btn-tertiary {
+  background: transparent;
+  color: var(--c-ink);
+  border-radius: var(--r-full);
+  padding: var(--s-xs) var(--s-sm);
+  font-weight: 480;
+}
+
+/* Magenta promo (use sparingly — one per page max) */
+.btn-magenta {
+  background: var(--c-accent-magenta);
+  color: var(--c-on-primary);
+  border-radius: var(--r-pill);
+  padding: 10px 20px;
+}
+
+/* Icon button */
+.btn-icon {
+  background: var(--c-surface-soft);
+  color: var(--c-ink);
+  border-radius: var(--r-full);
+  width: 40px;
+  height: 40px;
+  padding: 0;
+}
+
+.btn-icon--inverse {
+  background: var(--c-on-inverse-soft);
+  color: var(--c-inverse-ink);
+}
+
+.btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-sm);
+  align-items: center;
+  margin-top: var(--s-xl);
+}
+
+
+/* ==========================================================
+   SECTIONS
+   ========================================================== */
+
+/* White canvas section */
+.section-canvas {
+  padding-block: var(--s-section);
+}
+
+/* Color block sections — full width, rounded lg corners */
+.section-block {
+  margin-block: var(--s-xl);
+  border-radius: var(--r-lg);
+  padding: var(--s-xxl);
+  overflow: hidden;
+}
+
+.section-block .container {
+  /* Remove horizontal padding inside blocks — block has its own */
+  padding-inline: 0;
+}
+
+.section-block--lime   { background: var(--c-block-lime); }
+.section-block--lilac  { background: var(--c-block-lilac); }
+.section-block--cream  { background: var(--c-block-cream); }
+.section-block--pink   { background: var(--c-block-pink); }
+.section-block--mint   { background: var(--c-block-mint); }
+.section-block--coral  { background: var(--c-block-coral); }
+.section-block--navy   {
+  background: var(--c-block-navy);
+  color: var(--c-inverse-ink);
+}
+.section-block--navy .eyebrow {
+  color: var(--c-inverse-ink);
+  opacity: 0.6;
+}
+
+/* On mobile, blocks go full-bleed with no rounded corners */
+@media (max-width: 768px) {
+  .section-block {
+    border-radius: 0;
+    margin-inline: 0;
+    padding: var(--s-xxl) var(--s-lg);
+  }
+}
+
+/* Spacing rhythm inside sections */
+.section-canvas .eyebrow,
+.section-block .eyebrow {
+  margin-bottom: var(--s-lg);
+}
+
+.section-canvas .display-xl,
+.section-canvas .display-lg,
+.section-block .headline,
+.section-block .display-lg {
+  margin-bottom: var(--s-lg);
+}
+
+.section-canvas .body-lg,
+.section-block .body-lg {
+  margin-top: var(--s-sm);
+}
+
+
+/* ==========================================================
+   TOP NAV
+   ========================================================== */
+.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: 56px;
+  background: var(--c-canvas);
+  border-bottom: var(--s-hair) solid var(--c-hairline-soft);
+  display: flex;
+  align-items: center;
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  gap: var(--s-lg);
+}
+
+.nav-wordmark {
+  font-family: var(--f-sans);
+  font-size: 15px;
+  font-weight: 540;
+  letter-spacing: -0.15px;
+  color: var(--c-ink);
+  margin-right: auto;
+}
+
+.nav-links {
+  display: flex;
+  gap: var(--s-md);
+  align-items: center;
+}
+
+.nav-links a {
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--c-ink);
+  padding: var(--s-xs) var(--s-sm);
+  border-radius: var(--r-full);
+  transition: background 0.15s;
+}
+
+.nav-links a:hover {
+  background: var(--c-surface-soft);
+}
+
+.nav-ctas {
+  display: flex;
+  gap: var(--s-xs);
+  margin-left: var(--s-md);
+}
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+}
+
+
+/* ==========================================================
+   FOOTER
+   ========================================================== */
+.footer {
+  border-top: var(--s-hair) solid var(--c-hairline);
+  padding-block: var(--s-section);
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-wordmark {
+  font-family: var(--f-sans);
+  font-size: 18px;
+  font-weight: 540;
+  letter-spacing: -0.18px;
+}
+
+
+/* ==========================================================
+   CARDS
+   ========================================================== */
+.card {
+  background: var(--c-canvas);
+  border: var(--s-hair) solid var(--c-hairline);
+  border-radius: var(--r-lg);
+  padding: var(--s-lg);
+  transition: box-shadow 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--s-lg);
+  margin-top: var(--s-xl);
+}
+
+.template-card {
+  background: var(--c-surface-soft);
+  border-radius: var(--r-md);
+  padding: var(--s-md);
+}
